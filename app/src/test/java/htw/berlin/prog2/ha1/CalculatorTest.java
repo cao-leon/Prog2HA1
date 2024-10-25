@@ -106,9 +106,9 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-    // Teilaufgabe 2: Schreiben Sie zwei weitere zusätzliche Tests, die zwei unterschiedliche Fehlerkategorien aufdecken (d.h. deren Fehlerursachen in unterschiedlichen Methoden liegen) und somit fehlschlagen.@Test
-    @DisplayName("should display error when inverting zero")
+    // Teilaufgabe 2: Schreiben Sie zwei weitere zusätzliche Tests, die zwei unterschiedliche Fehlerkategorien aufdecken (d.h. deren Fehlerursachen in unterschiedlichen Methoden liegen) und somit fehlschlagen.
     @Test
+    @DisplayName("should display error when inverting zero")
     void testInversionOfZero() {
         Calculator calc = new Calculator();
 
@@ -116,6 +116,23 @@ class CalculatorTest {
         calc.pressUnaryOperationKey("1/x");
 
         String expected = "Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+    @Test
+    @DisplayName("should repeat the last operation when equals key is pressed multiple times")
+    void testRepeatedEqualsKey() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(3);
+        calc.pressEqualsKey();  // Erste Addition: 2 + 3 = 5
+        calc.pressEqualsKey();  // Zweite Addition: 5 + 3 = 8
+        calc.pressEqualsKey();  // Dritte Addition: 8 + 3 = 11
+
+        String expected = "11";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
