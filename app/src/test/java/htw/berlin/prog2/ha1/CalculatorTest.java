@@ -106,25 +106,20 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-    // Teilaufgabe 2: Schreiben Sie zwei weitere zusätzliche Tests, die zwei unterschiedliche Fehlerkategorien aufdecken (d.h. deren Fehlerursachen in unterschiedlichen Methoden liegen) und somit fehlschlagen.
+    // Teilaufgabe 2: Schreiben Sie zwei weitere zusätzliche Tests, die zwei unterschiedliche Fehlerkategorien aufdecken (d.h. deren Fehlerursachen in unterschiedlichen Methoden liegen) und somit fehlschlagen.@Test
+    @DisplayName("should display error when inverting zero")
     @Test
-    @DisplayName("should correctly calculate percentage of a number")
-    void testPercentageCalculation() {
+    void testInversionOfZero() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(5);
         calc.pressDigitKey(0);
-        calc.pressUnaryOperationKey("%");
-        calc.pressBinaryOperationKey("*");
-        calc.pressDigitKey(2);
-        calc.pressDigitKey(0);
-        calc.pressDigitKey(0);
+        calc.pressUnaryOperationKey("1/x");
 
-        String expected = "100";
+        String expected = "Error";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
     }
-
 }
+
 
